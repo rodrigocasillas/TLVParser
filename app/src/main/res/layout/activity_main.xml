@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.rodrigo.tlvparser.MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/text_view_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="210dp">
+
+        <EditText
+            android:id="@+id/tlv_parse_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:gravity="top|start"
+            android:hint="@string/paste_tlv_string"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/parse_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="parseButton"
+            android:text="@string/parse_button" />
+
+        <Button
+            android:id="@+id/clear_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="clearButton"
+            android:text="@string/clear_button" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <ListView
+            android:id="@+id/item_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+</LinearLayout>
