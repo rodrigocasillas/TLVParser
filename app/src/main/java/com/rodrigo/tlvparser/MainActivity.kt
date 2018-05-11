@@ -10,6 +10,7 @@ import android.widget.ListView
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
     internal lateinit var tlvParseEditText: EditText
     internal lateinit var tlv_string: String
 
@@ -20,15 +21,18 @@ class MainActivity : AppCompatActivity() {
     internal lateinit var arrayAdapter: ArrayAdapter<*>
 
 
+
+
     fun parseButton(view: View) {
+
         parse = TLVParser
         tlv_string = tlvParseEditText.text.toString()
         result = parse.parseTLV(tlv_string)
 
         for (entry in result) {
-            valuesArrayList.add("Tag " + entry.tag + " : " +
+            valuesArrayList.add(Tags.TAG + entry.tag + Tags.EQUALS +
                     entry.tagMeaning + "\n" +
-                    "HexValue: " + entry.hexValue + "\n" + "Value: " +
+                    Tags.HEX_VALUE + entry.hexValue + "\n" + Tags.VALUE +
                     entry.value)
         }
         arrayAdapter.notifyDataSetChanged()
