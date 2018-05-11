@@ -1,7 +1,6 @@
 package com.rodrigo.tlvparser
 
 import android.content.Context
-import android.content.pm.ActivityInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,14 +9,13 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ListView
 import java.util.*
-import android.content.Context.INPUT_METHOD_SERVICE
 
 
 
 class MainActivity : AppCompatActivity() {
 
     internal lateinit var tlvParseEditText: EditText
-    internal lateinit var tlv_string: String
+    internal lateinit var tlvString: String
 
     internal lateinit var parse: TLVParser
     internal lateinit var result: ArrayList<Values>
@@ -36,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         parse = TLVParser
-        tlv_string = tlvParseEditText.text.toString()
-        result = parse.parseTLV(tlv_string)
+        tlvString = tlvParseEditText.text.toString()
+        result = parse.parseTLV(tlvString)
 
         for (entry in result) {
             valuesArrayList.add(Tags.TAG + entry.tag + Tags.EQUALS +
@@ -59,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         tlvParseEditText =  findViewById<EditText>(R.id.tlv_parse_edit_text) as EditText
-        tlv_string = tlvParseEditText.text.toString()
+        tlvString = tlvParseEditText.text.toString()
 
 
         itemsListView = findViewById<ListView>(R.id.item_list_view) as ListView
