@@ -33,11 +33,11 @@ object TLVParser {
                 length *= 2
                 var value = tlv.substring(i, i + length)
                 i = i + length
-                if (key == "8A") {
-                    value = "0 0"
+                if (key == Tags.TAG8A) {
+                    value = Tags.TAG8A_VALUE
                 }
-                if (key == "00") {
-                    value = "---"
+                if (key == Tags.UNKNOWN) {
+                    value = Tags.BLANK
                 }
                 valuesArrayList.add(Values(key, Tags.getTagMeaning(key), value, Tags.hexToString(value)))
             }
