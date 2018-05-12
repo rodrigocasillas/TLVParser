@@ -13,16 +13,20 @@ object TLVParser {
 
         while (i < tlv.length - 2) {
             try {
+
                 var key = tlv.substring(i, i + 2)
                 i = i + 2
+
                 if ((Integer.parseInt(key, 16) and 0x1F) == 0x1F) {
                     // extra byte for TAG field
                     key += tlv.substring(i, i + 2)
                     i = i + 2
                 }
+
                 var len = tlv.substring(i, i + 2)
                 i = i + 2
                 var length = Integer.parseInt(len, 16)
+
                 if (length > 127) {
                     // more than 1 byte for length
                     val bytesLength = length - 128
@@ -30,12 +34,11 @@ object TLVParser {
                     i = i + (bytesLength * 2)
                     length = Integer.parseInt(len, 16)
                 }
+
                 length *= 2
                 var value = tlv.substring(i, i + length)
                 i = i + length
-                if (key == Tags.TAG8A) {
-                    value = Tags.TAG8A_VALUE
-                }
+
                 if (key == Tags.UNKNOWN) {
                     value = Tags.BLANK
                 }

@@ -23,9 +23,6 @@ class MainActivity : AppCompatActivity() {
     internal lateinit var itemsListView: ListView
     internal lateinit var arrayAdapter: ArrayAdapter<*>
 
-
-
-
     fun parseButton(view: View) {
 
         if (view != null) {
@@ -58,7 +55,6 @@ class MainActivity : AppCompatActivity() {
 
         tlvParseEditText =  findViewById<EditText>(R.id.tlv_parse_edit_text) as EditText
         tlvString = tlvParseEditText.text.toString()
-
 
         itemsListView = findViewById<ListView>(R.id.item_list_view) as ListView
         valuesArrayList = ArrayList()
