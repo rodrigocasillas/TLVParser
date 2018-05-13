@@ -17,7 +17,8 @@
             android:id="@+id/tlv_parse_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="5dp"
+            android:background="#3233b5e5"
             android:gravity="top|start"
             android:hint="@string/paste_tlv_string"
             android:textSize="18sp" />
@@ -31,6 +32,7 @@
 
         <Button
             android:id="@+id/parse_button"
+            style="?android:attr/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -39,6 +41,7 @@
 
         <Button
             android:id="@+id/clear_button"
+            style="?android:attr/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

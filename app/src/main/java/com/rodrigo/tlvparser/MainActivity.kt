@@ -19,9 +19,8 @@ class MainActivity : AppCompatActivity() {
 
     internal lateinit var parse: TLVParser
     internal lateinit var result: ArrayList<Values>
-    internal lateinit var valuesArrayList: ArrayList<String>
     internal lateinit var itemsListView: ListView
-    internal lateinit var arrayAdapter: ArrayAdapter<*>
+    internal lateinit var valuesAdapter: ValuesAdapter
 
     fun parseButton(view: View) {
 
@@ -34,19 +33,13 @@ class MainActivity : AppCompatActivity() {
         tlvString = tlvParseEditText.text.toString()
         result = parse.parseTLV(tlvString)
 
-        for (entry in result) {
-            valuesArrayList.add(Tags.TAG + entry.tag + Tags.EQUALS +
-                    entry.tagMeaning + "\n" +
-                    Tags.HEX_VALUE + entry.hexValue + "\n" + Tags.VALUE +
-                    entry.value)
-        }
-        arrayAdapter.notifyDataSetChanged()
+        valuesAdapter.clear()
+        valuesAdapter.addAll(result)
     }
 
     fun clearButton(view: View) {
         tlvParseEditText.setText("")
-        valuesArrayList.clear()
-        arrayAdapter.notifyDataSetChanged()
+        valuesAdapter.clear()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,12 +48,12 @@ class MainActivity : AppCompatActivity() {
 
         tlvParseEditText =  findViewById<EditText>(R.id.tlv_parse_edit_text) as EditText
         tlvString = tlvParseEditText.text.toString()
+        result = ArrayList()
 
         itemsListView = findViewById<ListView>(R.id.item_list_view) as ListView
-        valuesArrayList = ArrayList()
 
-        arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, valuesArrayList)
-        itemsListView.adapter = arrayAdapter
+        valuesAdapter = ValuesAdapter(this, R.layout.values_list_item, result)
+        itemsListView.adapter = valuesAdapter
     }
 }
 

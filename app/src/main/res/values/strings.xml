@@ -3,4 +3,7 @@
     <string name="parse_button">Parse</string>
     <string name="clear_button">Clear</string>
     <string name="paste_tlv_string">Paste TLV String</string>
+    <string name="tag_and_meaning">Tag and Meaning</string>
+    <string name="hexadecimal_value">Hexadecimal Value</string>
+    <string name="value">Value</string>
 </resources>
