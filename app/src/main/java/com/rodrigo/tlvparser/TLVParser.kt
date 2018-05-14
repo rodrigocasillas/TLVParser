@@ -50,7 +50,7 @@ object TLVParser {
                 throw RuntimeException("Error parsing number", e)
             }
             catch (e:IndexOutOfBoundsException) {
-                valuesArrayList.add(Values(key, Tags.getTagMeaning(key), Tags.NOT_FOUND, Tags.hexToString(value)))
+                valuesArrayList.add(Values(key, Tags.getTagMeaning(key), Tags.NOT_FOUND + key, Tags.hexToString(value)))
                 return valuesArrayList
                 //throw RuntimeException("Error processing field", e)
             }
