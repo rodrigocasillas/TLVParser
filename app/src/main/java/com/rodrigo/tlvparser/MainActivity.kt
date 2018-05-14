@@ -24,14 +24,16 @@ class MainActivity : AppCompatActivity() {
     internal lateinit var valuesAdapter: ValuesAdapter
 
     fun parseButton(view: View) {
-
+    // Hides keyboard
         if (view != null) {
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)
         }
-
+    // Gets TLV String from UI
         parse = TLVParser
         tlvString = tlvParseEditText.text.toString()
+
+    // TLV String parsing and decoding
 
         try {
             result = parse.parseTLV(tlvString)
