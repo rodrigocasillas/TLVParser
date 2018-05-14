@@ -3,6 +3,8 @@ package com.rodrigo.tlvparser
 object TLVParser {
 
     fun parseTLV(tlv:String):ArrayList<Values> {
+        var key = ""
+        var value = ""
 
         if (tlv == null || tlv.length % 2 != 0) {
             throw RuntimeException("Invalid tlv, null or odd length")
@@ -11,10 +13,10 @@ object TLVParser {
         val valuesArrayList = ArrayList<Values>()
         var i = 0
 
-        while (i < tlv.length - 2) {
+        while (i < tlv.length) {
             try {
 
-                var key = tlv.substring(i, i + 2)
+                key = tlv.substring(i, i + 2)
                 i = i + 2
 
                 if ((Integer.parseInt(key, 16) and 0x1F) == 0x1F) {
@@ -36,7 +38,7 @@ object TLVParser {
                 }
 
                 length *= 2
-                var value = tlv.substring(i, i + length)
+                value = tlv.substring(i, i + length)
                 i = i + length
 
                 if (key == Tags.UNKNOWN) {
@@ -48,7 +50,9 @@ object TLVParser {
                 throw RuntimeException("Error parsing number", e)
             }
             catch (e:IndexOutOfBoundsException) {
-                throw RuntimeException("Error processing field", e)
+                valuesArrayList.add(Values(key, Tags.getTagMeaning(key), Tags.NOT_FOUND, Tags.hexToString(value)))
+                return valuesArrayList
+                //throw RuntimeException("Error processing field", e)
             }
         }
         return valuesArrayList

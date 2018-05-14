@@ -33,7 +33,8 @@ object UnitTest {
         }
 
         println(matchCounts.toString() + " of " + arrayList1.size + " matches.")
+        println("Arrays sizes: " + arrayList1.size + " : " + arrayList2.size)
 
-        return arrayList1.size == matchCounts
+        return arrayList1.size == matchCounts && arrayList1.size == arrayList2.size
     }
 }
