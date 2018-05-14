@@ -8,6 +8,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ListView
+import android.widget.Toast
 import java.util.*
 
 
@@ -31,7 +32,12 @@ class MainActivity : AppCompatActivity() {
 
         parse = TLVParser
         tlvString = tlvParseEditText.text.toString()
-        result = parse.parseTLV(tlvString)
+
+        try {
+            result = parse.parseTLV(tlvString)
+        } catch (e: RuntimeException) {
+            Toast.makeText(this, "Invalid tlv, null or odd length", Toast.LENGTH_SHORT).show()
+        }
 
         valuesAdapter.clear()
         valuesAdapter.addAll(result)
